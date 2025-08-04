@@ -1,13 +1,13 @@
 public interface SEngine {
 //    void loadProgramFromXml(String filePath) throws InvalidProgramException, FileNotFoundException;
 //
-//    ProgramInfoDTO getProgramDetails();
+//    ProgramInfoDTO get_program_details();
 //
-//    ExpandedProgramDTO expandProgram(int expansionLevel);
+//    ExpandedProgramDTO expand_program(int expansionLevel);
 //
-//    RunResultDTO runProgram(int expansionLevel, List<Integer> inputs);
+//    RunResultDTO run_program(int expansionLevel, List<Integer> inputs);
 //
-//    List<RunHistoryDTO> getRunHistory();
+//    List<RunHistoryDTO> get_run_history();
 //
 //    boolean isProgramLoaded();
 }

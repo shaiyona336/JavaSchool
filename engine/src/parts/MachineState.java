@@ -17,7 +17,7 @@ public class MachineState {
     }
 
     public void sub_one(String variableName) {
-        //add one to variableName in variables
+        //sub one to variableName in variables, cant be less than 0
     }
 
     public String get_current_variable() {

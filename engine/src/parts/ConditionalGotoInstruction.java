@@ -1,6 +1,7 @@
 package parts;
 
-public class ConditionalGotoInstruction implements Instruction {
+public class ConditionalGotoInstruction extends AbstractInstruction {
+
     @Override
     public void execute_command(MachineState state) {
 //        int variable;
@@ -12,9 +13,9 @@ public class ConditionalGotoInstruction implements Instruction {
 //            state.advance_program_counter();
 //        }
     }
-
     @Override
     public int get_cycles() {
         return 2;
     }
+
 }

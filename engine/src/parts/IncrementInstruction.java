@@ -1,6 +1,7 @@
 package parts;
 
-public class IncrementInstruction implements Instruction{
+public class IncrementInstruction extends AbstractInstruction {
+
     @Override
     public void execute_command(MachineState state) {
         //int variable;

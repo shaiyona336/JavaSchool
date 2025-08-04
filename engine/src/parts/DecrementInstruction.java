@@ -1,6 +1,7 @@
 package parts;
 
-public class DecrementInstruction implements Instruction {
+public class DecrementInstruction extends AbstractInstruction {
+
     @Override
     public void execute_command(MachineState state) {
         //int variable;
@@ -12,4 +13,5 @@ public class DecrementInstruction implements Instruction {
     public int get_cycles() {
         return 1;
     }
+
 }

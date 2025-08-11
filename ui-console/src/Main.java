@@ -1,15 +1,42 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        SEmuEngineImpl engine = new SEmuEngineImpl(); // מופע של המנוע
+        Scanner scanner = new Scanner(System.in);
+        boolean exit = false;
+        int choice;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+
+        while (!exit) {
+            System.out.println("1. Load file");
+            System.out.println("2. Show program");
+            System.out.println("3. Expand");
+            System.out.println("4. Run program");
+            System.out.println("5. Show history/statistics");
+            System.out.println("6. Exit system");
+            System.out.print("Choose an option: ");
+
+            choice = scanner.nextInt();
+            switch (choice) {
+                case 1:
+                    break;
+                case 2:
+                    if (engine.isProgramLoaded()) {
+                        System.out.println(engine.get_program_details());
+                    } else {
+                        System.out.println("No loaded program.");
+                    }
+                    break;
+                // ... שאר המקרים
+                case 6:
+                    exit = true;
+                    System.out.println("Exiting");
+                    break;
+                default:
+                    System.out.println("Invalid choice, Please enter number between 1 and 6.\n");
+            }
         }
+        scanner.close();
     }
 }

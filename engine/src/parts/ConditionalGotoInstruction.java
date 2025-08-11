@@ -1,5 +1,7 @@
 package parts;
 
+import java.util.List;
+
 public class ConditionalGotoInstruction extends AbstractInstruction {
     private final String variable;
     private final String targetLabel;
@@ -35,6 +37,15 @@ public class ConditionalGotoInstruction extends AbstractInstruction {
     @Override
     public String toDisplayString() {
         return String.format("IF %s != 0 GOTO %s", variable, targetLabel);
+    }
+
+    @Override
+    public List<String> getVariables() {
+        return List.of(variable);
+    }
+
+    public String getTargetLabel() {
+        return targetLabel;
     }
 
 }

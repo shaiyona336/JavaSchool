@@ -1,7 +1,7 @@
 public interface SEngine {
 //    void loadProgramFromXml(String filePath) throws InvalidProgramException, FileNotFoundException;
 //
-//    ProgramInfoDTO get_program_details();
+    public String get_program_details();
 //
 //    ExpandedProgramDTO expand_program(int expansionLevel);
 //

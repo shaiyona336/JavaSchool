@@ -1,5 +1,7 @@
 package parts;
 
+import java.util.List;
+
 public class DecrementInstruction extends AbstractInstruction {
     private final String variable;
 
@@ -28,6 +30,11 @@ public class DecrementInstruction extends AbstractInstruction {
     @Override
     public String toDisplayString() {
         return String.format("%s <- %s - 1", variable, variable);
+    }
+
+    @Override
+    public List<String> getVariables() {
+        return List.of(variable);
     }
 
 }

@@ -8,7 +8,6 @@ public abstract class AbstractInstruction implements Instruction {
         this.label = label;
     }
     protected AbstractInstruction() {
-
         this.label = null;
     }
 

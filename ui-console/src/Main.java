@@ -7,6 +7,10 @@ public class Main {
         boolean exit = false;
         int choice;
 
+        //TODO
+        //for debugging 2. show program
+        engine.load_program();
+
 
         while (!exit) {
             System.out.println("1. Load file");

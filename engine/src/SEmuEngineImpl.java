@@ -4,7 +4,11 @@ import parts.SyntheticInstruction;
 
 import java.util.List;
 import java.util.ArrayList;
-
+//
+import parts.IncrementInstruction;
+import parts.DecrementInstruction;
+import parts.ConditionalGotoInstruction;
+//
 public class SEmuEngineImpl implements SEngine {
     private Program currentProgram;
 //    private List<RunHistoryDTO> runHistory;
@@ -13,6 +17,22 @@ public class SEmuEngineImpl implements SEngine {
         this.currentProgram = null;
 //        this.runHistory = new ArrayList<>();
     }
+
+    public void load_program() {
+        List<Instruction> instructions = new ArrayList<>();
+
+        instructions.add(new DecrementInstruction("L1", "x1"));
+        instructions.add(new IncrementInstruction("y"));
+        instructions.add(new ConditionalGotoInstruction(null, "x1", "L1"));
+        // Add one more instruction for display variety
+        instructions.add(new IncrementInstruction("z1"));
+
+
+        this.currentProgram = new Program(instructions,"Debug Program");
+        System.out.println("DEBUG: A sample program has been loaded.");
+    }
+
+
     //TODO
     public String get_program_details() {
         StringBuilder details = new StringBuilder();
@@ -24,7 +44,7 @@ public class SEmuEngineImpl implements SEngine {
         details.append("Program name: ").append(currentProgram.getName()).append("\n");
         details.append("Input variables: ").append(String.join(", ", currentProgram.getInputVariables())).append("\n");
         details.append("Labels: ").append(String.join(", ", currentProgram.getLabels())).append("\n\n");
-        details.append("Instructions: ");
+        details.append("Instructions: \n");
         //instructions
         List<Instruction> instructions = currentProgram.getInstructions();
         for (int i = 0; i < instructions.size(); i++) {

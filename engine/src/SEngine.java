@@ -1,5 +1,7 @@
 public interface SEngine {
 //    void loadProgramFromXml(String filePath) throws InvalidProgramException, FileNotFoundException;
+
+    public void load_program();
 //
     public String get_program_details();
 //

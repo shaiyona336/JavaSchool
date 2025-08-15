@@ -1,11 +1,12 @@
 package parts.label;
 
-public class LabelImpl implements Label{
+public class LabelImpl implements Label {
 
     private final String label;
 
-    public LabelImpl(int number) {
-        label = "L" + number;
+    // FIX: Constructor now accepts a String.
+    public LabelImpl(String label) {
+        this.label = label;
     }
 
     public String getLabelRepresentation() {

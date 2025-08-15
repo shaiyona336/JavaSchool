@@ -1,40 +1,28 @@
 package parts.instruction;
 
 import parts.MachineState;
-
+import parts.label.Label;
+import parts.variable.Variable;
 import java.util.List;
 
 public class IncrementInstruction extends AbstractInstruction {
-    private final String variable;
 
-    public IncrementInstruction(String label, String variable) {
-        super(label);
-        this.variable = variable;
+    public IncrementInstruction(Variable variable) {
+        super(InstructionData.INCREASE, variable);
     }
 
-    public IncrementInstruction(String variable) {
-        this.variable = variable;
+    public IncrementInstruction(Variable variable, Label label) {
+        super(InstructionData.INCREASE, variable, label);
     }
 
     @Override
     public void execute_command(MachineState state) {
-        //int variable;
-        //variable = get_current_variable(state);
-        //add_one(variable)
-        //state.advance_program_counter()
-    }
-    @Override
-    public int get_cycles() {
-        return 1;
+        // execute logic will go here
     }
 
     @Override
     public String toDisplayString() {
-        return String.format("%s <- %s + 1", variable, variable);
+        return String.format("%s <- %s + 1", variable.getRepresentation(), variable.getRepresentation());
     }
 
-    @Override
-    public List<String> getVariables() {
-        return List.of(variable);
-    }
 }

@@ -1,14 +1,15 @@
 package parts.instruction;
 
 import parts.MachineState;
-
+import parts.label.Label;
+import parts.variable.Variable;
 import java.util.List;
 
 public interface Instruction {
     void execute_command(MachineState state);
     int get_cycles();
-    String get_label();
+    Label getLabel();
+    String getName();
     String toDisplayString();
-    List<String> getVariables();
-
+    List<Variable> getVariables(); // This is the only method for getting variables
 }

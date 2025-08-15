@@ -32,7 +32,7 @@ public class Main {
                         System.out.println("No loaded program.");
                     }
                     break;
-                // ... שאר המקרים
+
                 case 6:
                     exit = true;
                     System.out.println("Exiting");

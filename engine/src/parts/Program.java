@@ -2,6 +2,10 @@ package parts;
 
 import parts.instruction.ConditionalGotoInstruction;
 import parts.instruction.Instruction;
+import parts.label.FixedLabel;
+import parts.label.Label;
+import parts.variable.Variable;
+import parts.variable.VariableType;
 
 import java.util.*;
 
@@ -14,47 +18,45 @@ public class Program {
         this.instructions = instructions;
     }
 
-    public Instruction get_instruction(int programCounter) {
-        assert instructions != null : "program is not set";
-        assert programCounter >= 0 && programCounter < instructions.size() : "programCounter out of bounds";
-
-        return instructions.get(programCounter);
-    }
-
     public String getName() {
         return name;
     }
-    //TODO
-    public List<String> getInputVariables() {
-        Set<String> inputs = new TreeSet<>(Comparator.comparingInt(s -> Integer.parseInt(s.substring(1))));
+
+    public List<Variable> getInputVariables() {
+        Set<Variable> inputs = new TreeSet<>(Comparator.comparingInt(v ->
+                Integer.parseInt(v.getRepresentation().substring(1))
+        ));
         for (Instruction instruction : instructions) {
-            for (String var : instruction.getVariables()) {
-                if (var != null && var.startsWith("x")) {
+            for (Variable var : instruction.getVariables()) {
+                if (var != null && var.getType() == VariableType.INPUT) {
                     inputs.add(var);
                 }
             }
         }
         return new ArrayList<>(inputs);
     }
-    //TODO
-    public List<String> getLabels() {
-        Set<String> labels = new TreeSet<>();
-        List<String> sortedLabels = new ArrayList<>(labels);
+
+    public List<Label> getLabels() {
+        // FIX: Provide a Comparator to tell the TreeSet how to sort Labels.
+        Set<Label> labels = new TreeSet<>(Comparator.comparing(Label::getLabelRepresentation));
         boolean hasExit = false;
+
         for (Instruction instruction : instructions) {
-            if (instruction.get_label() != null) {
-                labels.add(instruction.get_label());
+            if (instruction.getLabel() != null && !instruction.getLabel().getLabelRepresentation().isEmpty()) {
+                labels.add(instruction.getLabel());
             }
             if (instruction instanceof ConditionalGotoInstruction) {
-                String targetLabel = ((ConditionalGotoInstruction) instruction).getTargetLabel();
-                if ("EXIT".equalsIgnoreCase(targetLabel)) {
+                Label targetLabel = ((ConditionalGotoInstruction) instruction).getTargetLabel();
+                if ("EXIT".equalsIgnoreCase(targetLabel.getLabelRepresentation())) {
                     hasExit = true;
                 }
-
             }
         }
+
+        List<Label> sortedLabels = new ArrayList<>(labels);
+
         if (hasExit) {
-            sortedLabels.add("EXIT");
+            sortedLabels.add(FixedLabel.EXIT);
         }
 
         return sortedLabels;
@@ -64,5 +66,3 @@ public class Program {
         return instructions;
     }
 }
-
-

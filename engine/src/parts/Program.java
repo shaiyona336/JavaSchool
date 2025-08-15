@@ -1,5 +1,8 @@
 package parts;
 
+import parts.instruction.ConditionalGotoInstruction;
+import parts.instruction.Instruction;
+
 import java.util.*;
 
 public class Program {

@@ -1,13 +1,13 @@
-import parts.Instruction;
+import parts.instruction.Instruction;
 import parts.Program;
-import parts.SyntheticInstruction;
+import parts.instruction.SyntheticInstruction;
 
 import java.util.List;
 import java.util.ArrayList;
 //
-import parts.IncrementInstruction;
-import parts.DecrementInstruction;
-import parts.ConditionalGotoInstruction;
+import parts.instruction.IncrementInstruction;
+import parts.instruction.DecrementInstruction;
+import parts.instruction.ConditionalGotoInstruction;
 //
 public class SEmuEngineImpl implements SEngine {
     private Program currentProgram;

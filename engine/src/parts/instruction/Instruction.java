@@ -1,4 +1,6 @@
-package parts;
+package parts.instruction;
+
+import parts.MachineState;
 
 import java.util.List;
 

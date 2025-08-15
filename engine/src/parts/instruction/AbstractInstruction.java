@@ -1,4 +1,4 @@
-package parts;
+package parts.instruction;
 
 public abstract class AbstractInstruction implements Instruction {
 
